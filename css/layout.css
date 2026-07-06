@@ -490,3 +490,26 @@
         padding: 10% !important;
     }
 }
+
+.scroll-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: #999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Animación de la flechita para que se mueva sola */
+.scroll-arrow {
+    animation: bounce-right 1.5s infinite;
+}
+
+@keyframes bounce-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
