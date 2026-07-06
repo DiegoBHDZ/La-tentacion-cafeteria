@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tentación</title>
+    
+    <!-- Enlace al CSS principal que importará al resto -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- 1. Navbar -->
+<header class="navbar" id="navbar">
+    <!-- 1. Logo (Dinámico PC vs Móvil) -->
+    <a href="#" class="nav-logo">
+        <img src="assets/img/logo.png" alt="Logo Cuadrado" class="logo-img mobile-only">
+        <img src="assets/img/logo_horizontal.png" alt="Logo Completo" class="logo-img desktop-only">
+        
+    </a>
+
+    <!-- 2. Enlaces del menú -->
+    <nav class="nav-links" id="nav-links">
+        <a href="#menu" class="nav-item">Menú</a>
+        <a href="#nosotros" class="nav-item">Nosotros</a>
+        <a href="#galeria" class="nav-item">El Espacio</a>
+    </nav>
+
+    <!-- 3. Acciones a la derecha (Botón y Hamburguesa) -->
+    <div class="nav-actions">
+        <!-- Botón Ubicación -->
+        <a href="https://maps.google.com/..." target="_blank" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span class="btn-text">Cómo llegar</span>
+        </a>
+
+        <!-- Botón Hamburguesa -->
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+
+<!-- index.html (Sección Hero Actualizada con tu imagen) -->
+<section class="hero" id="hero">
+    <!-- El ID hero-bg es crucial para que el JavaScript lo encuentre -->
+    <div class="hero-bg" id="hero-bg" style="background-image: url('assets/img/hero_cafe.jpg');"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+        <!-- El Kicker o Ceja -->
+        <span class="hero-kicker" style="font-family: var(--font-body); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
+            El dulce manjar de tu paladar
+        </span>
+        
+        <!-- El Título Principal -->
+        <h1 class="hero-title">La Tentación</h1>
+        
+        <!-- El Subtítulo Persuasivo -->
+        <p class="hero-subtitle" style="max-width: 600px; margin: 0 auto;">
+            Mucho más que café. Relájate y comparte desde nuestras tradicionales marquesitas dulces y saladas, hasta bebidas calientes, alitas y snacks para cualquier antojo.
+        </p>
+        
+        <a href="#menu" class="btn-primary" style="margin-top: var(--space-lg);">Ver el Menú</a>
+    </div>
+</section>
+
+<!-- index.html (Sección Menú Carrusel) -->
+<section class="menu-carousel-section" id="menu">
+    <div class="carousel-wrapper">
+        <h2 class="section-title">Nuestro Menú</h2>
+        
+        <!-- Contenedor principal con flechas -->
+        <div class="carousel-container">
+            
+            <!-- Flecha Izquierda (Solo Desktop) -->
+            <button class="slider-btn prev-btn" id="prev-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <!-- La Pista donde corren las tarjetas -->
+            <div class="carousel-track" id="menu-track">
+                
+                <!-- TARJETA 1: Especialidades -->
+                <div class="menu-card-large">
+                    <h3 class="card-title">Especialidades</h3>
+                    <ul class="card-list">
+                        <li>
+                            <div class="li-head"><span>Ferrero Rocher</span> <span>$85</span></div>
+                            <p>Chocolate Ferrero, Nutella, fruta, queso bola/Philadelphia.</p>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Bomba Yucateca</span> <span>$75</span></div>
+                            <p>Nutella, fresa, plátano, queso bola/Philadelphia.</p>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Chocolate de tu elección</span> <span>$80</span></div>
+                            <p>Nutella, fruta, queso, y tu chocolate favorito (Kínder, Bubulubu, etc).</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TARJETA 2: Arma tu Marquesita -->
+                <div class="menu-card-large">
+                    <h3 class="card-title">Armala a tu gusto</h3>
+                    <ul class="card-list">
+                        <li>
+                            <div class="li-head"><span>Un ingrediente</span> <span>$60</span></div>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Dos ingredientes</span> <span>$70</span></div>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Tres ingredientes</span> <span>$80</span></div>
+                        </li>
+                        <li style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 10px;">
+                            <div class="li-head"><span style="color: var(--color-accent);">Ingrediente extra</span> <span style="color: var(--color-accent);">$10</span></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TARJETA 3: Bebidas -->
+                <div class="menu-card-large">
+                    <h3 class="card-title">Bebidas</h3>
+                    <ul class="card-list">
+                        <li>
+                            <div class="li-head"><span>Calientes o Frappés</span> <span>$50 - $65</span></div>
+                            <p>Taro, Vainilla, Chocolate blanco, Fresas con crema.</p>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Té caliente (12 oz)</span> <span>$25</span></div>
+                            <p>Manzanilla, Limón, Canela.</p>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Licuados</span> <span>$35</span></div>
+                            <p>Fresa o Plátano.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TARJETA 4: Snacks -->
+                <div class="menu-card-large">
+                    <h3 class="card-title">Snacks y Salados</h3>
+                    <ul class="card-list">
+                        <li>
+                            <div class="li-head"><span>Papas a la francesa</span> <span>$50</span></div>
+                            <p>Queso amarillo, catsup, salsa valentina.</p>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Salchipapas</span> <span>$60</span></div>
+                            <p>Papas y salchichas fritas con aderezos.</p>
+                        </li>
+                        <li>
+                            <div class="li-head"><span>Alitas c/ Papas</span> <span>$90</span></div>
+                            <p>Acompañadas con lechuga, pepino y zanahoria.</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div> <!-- Fin de la pista -->
+
+            <!-- Flecha Derecha (Solo Desktop) -->
+            <button class="slider-btn next-btn" id="next-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+<!-- index.html (Sección Nosotros - Diseño Orgánico y Asimétrico) -->
+<section class="about-section" id="nosotros">
+    <div class="about-container">
+        
+        <div class="section-header-dark">
+            <span class="kicker-light">La historia real</span>
+            <h2 class="title-light">Nosotros</h2>
+        </div>
+        
+        <!-- Tarjeta 1: Clásica (Color Crema Base) -->
+        <div class="about-card card-cream" id="card-1">
+            <!-- Unsplash: Café y ambiente relajado -->
+            <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600');"></div>
+            <div class="about-content">
+                <h3>Cómo empezó todo</h3>
+                <p>Para ser honestos, todo empezó porque queríamos un lugar donde platicar a gusto. Sin prisas, sin música a todo volumen, solo buen café y buena compañía.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2: Tipográfica (Color Acento/Caramelo) -->
+        <div class="about-card card-caramel" id="card-2">
+            <div class="about-content typography-only">
+                <p class="massive-text">"Trajimos un Jenga, unas cartas y decidimos que este sería un lugar para desconectar de la rutina y reírse un rato."</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3: Invertida (Color Blanco Puro) -->
+        <div class="about-card card-white" id="card-3">
+            <div class="about-content">
+                <h3>El Antojo Manda</h3>
+                <p>No somos un restaurante de etiqueta. Preparamos las marquesitas, alitas y frappés exactamente como nos gusta comerlos a nosotros cuando tenemos hambre.</p>
+            </div>
+            <!-- Unsplash: Detalle de comida/postre rústico -->
+            <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&q=80&w=600');"></div>
+        </div>
+
+    </div>
+</section>
+
+    
+    <!-- Scripts modulares -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/parallax.js"></script>
+    <script type="module" src="js/menu.js"></script>
+</body>
+</html>

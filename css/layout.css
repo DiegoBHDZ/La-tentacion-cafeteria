@@ -1,0 +1,492 @@
+/* === CLASES DE CONTROL DE VISIBILIDAD === */
+.mobile-only { display: none; }
+.desktop-only { display: inline-block; } /* Añadido para asegurar visibilidad en PC */
+
+/* ==========================================================================
+   1. NAVBAR BASE (Escritorio / Global)
+   ========================================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--space-md) var(--space-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: all 0.4s ease;
+    background-color: transparent;
+}
+
+/* === LOGO === */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    color: var(--color-bg);
+    font-weight: 600;
+    transition: color 0.4s ease;
+}
+
+/* === ENLACES === */
+.nav-links {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-bg);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent);
+}
+
+/* === BOTÓN Y ACCIONES === */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-bg) !important;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+.btn-primary svg {
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+/* Ocultamos la hamburguesa en PC */
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 18px;
+    width: 24px;
+    z-index: 101;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-bg);
+    transition: all 0.3s ease;
+}
+
+/* === ESTADO SCROLLEADO (Controlado por JS) === */
+.navbar.scrolled {
+    background-color: var(--color-bg);
+    padding: var(--space-sm) var(--space-xl);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navbar.scrolled .nav-links a,
+.navbar.scrolled .logo-text {
+    color: var(--color-text);
+}
+
+.navbar.scrolled .nav-links a:hover {
+    color: var(--color-accent);
+}
+
+.navbar.scrolled .hamburger .bar {
+    background-color: var(--color-text);
+}
+
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================== */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/img/hero_cafe.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transform: scale(1.1) translate3d(0, 0, 0);
+    will-change: transform;
+    animation: revealHero 3.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(35, 31, 29, 0.55);
+    z-index: 2;
+    animation: revealHero 3.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === ANIMACIONES DEL HERO === */
+
+@keyframes revealHero {
+    0% {
+        -webkit-clip-path: inset(40% 40% 40% 40% round 30px);
+        clip-path: inset(40% 40% 40% 40% round 30px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-clip-path: inset(0 0 0 0 round 0);
+        clip-path: inset(0 0 0 0 round 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.hero-content > * {
+    opacity: 0;
+}
+
+.hero-kicker { animation: fadeUp 1s ease 1s forwards; }
+.hero-title { animation: fadeUp 1s ease 1.2s forwards; }
+.hero-subtitle { animation: fadeUp 1s ease 1.4s forwards; }
+.hero-content .btn-primary { animation: fadeUp 1s ease 1.6s forwards; }
+
+
+/* ==========================================================================
+   3. VERSIÓN MÓVIL (Menos de 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Controles de Logo */
+    .desktop-only { display: none !important; }
+    .mobile-only { 
+        display: block; 
+        height: 35px;
+        width: auto;
+    }
+
+    /* Reducimos el padding del Navbar */
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .navbar.scrolled {
+        padding: 10px 20px;
+    }
+
+    /* Botón de Ubicación circular */
+    .btn-text {
+        display: none;
+    }
+    .btn-primary {
+        padding: 10px;
+        border-radius: 50%;
+    }
+    .btn-primary svg {
+        margin-right: 0 !important;
+    }
+
+    /* Activamos la Hamburguesa */
+    .hamburger {
+        display: flex;
+    }
+
+    /* === EL MENÚ DESPLEGABLE MÓVIL (ESTILO PREMIUM) === */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(35, 31, 29, 0.08);
+        transition: max-height 0.5s cubic-bezier(0.19, 1, 0.22, 1), padding 0.5s ease;
+        border-top: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .nav-links.active {
+        max-height: 350px;
+        padding: var(--space-md) 0 var(--space-lg) 0;
+    }
+
+    .nav-links a {
+        color: var(--color-text);
+        font-family: var(--font-heading);
+        font-size: var(--text-lg);
+        text-transform: none;
+        letter-spacing: normal;
+        padding: 18px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: none;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-accent);
+        margin: 8px auto 0;
+        transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:active {
+        color: var(--color-accent);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:active::after {
+        width: 40px; 
+    }
+
+    /* Animación de la Hamburguesa a una "X" */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--color-text);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--color-text);
+    }
+}
+
+/* ==========================================================================
+   4. SECCIÓN NOSOTROS (VERTICAL STACKING CARDS)
+   ========================================================================== */
+.about-section {
+    background-color: var(--color-text); /* Fondo oscuro para resaltar */
+    padding: var(--space-xxl) var(--space-md);
+}
+
+.about-container {
+    max-width: 600px; /* Reducimos el ancho para que la tarjeta vertical no sea un bloque deforme */
+    margin: 0 auto;
+    padding-bottom: 0; 
+}
+
+/* === TÍTULO DE LA SECCIÓN === */
+.section-header-dark {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    top: 20px; /* Se queda pegado arriba con un pequeño margen */
+    z-index: 5; /* Asegura que esté por encima de las tarjetas */
+    background-color: var(--color-text); /* Fondo oscuro para que no se transparente */
+}
+
+.kicker-light {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #A0A0A0; /* Gris claro */
+    display: block;
+    margin-bottom: 10px;
+}
+
+.title-light {
+    font-family: var(--font-heading);
+    font-size: var(--text-xxl);
+    color: var(--color-bg); /* Blanco roto */
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* === LAS TARJETAS VERTICALES === */
+.about-card {
+    position: sticky;
+    top: 20vh; /* Frenan un poco más arriba para dejar ver el efecto */
+    
+    /* El cambio maestro: de horizontal a vertical */
+    flex-direction: column; 
+    height: 75vh; 
+    
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    box-shadow: 0 -15px 30px rgba(0,0,0,0.3);
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 4vh; 
+}
+
+/* Escalonamiento de las tarjetas */
+#card-1 { top: 20vh; }
+#card-2 { top: 23vh; }
+#card-3 { top: 26vh; }
+
+.section-header-dark {
+    position: sticky;
+    top: 15vh; /* Se pegará exactamente al borde superior */
+    z-index: 5;
+    background-color: var(--color-text);
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1.2; /* Le damos un poco más de peso a la imagen que al texto */
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.about-content {
+    flex: 1; /* El texto toma el espacio restante */
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; /* Centramos el texto para que luzca más elegante */
+}
+
+.about-content h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+}
+
+.about-content p {
+    font-size: var(--text-md);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* En móviles ya no necesitamos cambiar el flex-direction porque ya es vertical, 
+   solo ajustamos tamaños */
+@media (max-width: 768px) {
+    .about-card {
+        height: auto;
+        min-height: 80vh;
+    }
+    .about-image {
+        min-height: 350px;
+    }
+    .about-content {
+        padding: var(--space-lg);
+    }
+}
+
+/* === COLORES DE LAS TARJETAS === */
+.card-cream {
+    background-color: var(--color-bg); /* Usa tu color crema base */
+}
+
+.card-caramel {
+    background-color: var(--color-accent); /* Usa tu color caramelo/café */
+}
+
+/* Forzamos que los textos de la tarjeta caramelo sean claros para que se lean bien */
+.card-caramel .massive-text {
+    color: var(--color-bg);
+}
+
+.card-white {
+    background-color: #FFFFFF; /* Blanco puro para contrastar duro */
+}
+
+/* === DISEÑO DE LA TARJETA 2 (SOLO TEXTO) === */
+.typography-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 15% !important; /* Mucho margen interior para que respire */
+}
+
+.massive-text {
+    font-family: var(--font-heading);
+    font-size: 2rem !important; /* Letra enorme */
+    line-height: 1.4 !important;
+    text-align: center;
+    font-style: italic;
+}
+
+/* === AJUSTES PARA MÓVILES === */
+@media (max-width: 768px) {
+    .massive-text {
+        font-size: 1.5rem; /* Achicamos un poco la letra gigante en celular */
+    }
+    
+    .typography-only {
+        padding: 10% !important;
+    }
+}

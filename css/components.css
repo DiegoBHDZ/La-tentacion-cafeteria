@@ -1,0 +1,126 @@
+/* === ESTRUCTURA DEL CARRUSEL === */
+.menu-carousel-section {
+    padding: var(--space-xxl) 0; /* Padding arriba y abajo, pero no a los lados para que fluya */
+    background-color: var(--color-bg);
+}
+
+.carousel-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 var(--space-md);
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* === LA PISTA (TRACK) === */
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* El frenado automático */
+    scroll-behavior: smooth;
+    padding-bottom: 20px; /* Espacio para la sombra */
+    /* Ocultar la barra de scroll nativa para que se vea limpio */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.carousel-track::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* === LAS TARJETAS === */
+.menu-card-large {
+    /* En PC, ocupan el 50% menos el espacio del gap (para mostrar 2) */
+    flex: 0 0 calc(50% - 10px); 
+    scroll-snap-align: start; /* Aquí es donde frena el scroll */
+    
+    background-color: #FFFFFF;
+    padding: var(--space-lg);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+    border-bottom: 2px solid #EBEBEB;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* === INTERIOR DE LA TARJETA === */
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-list li {
+    margin-bottom: 15px;
+}
+
+.li-head {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-md);
+    color: var(--color-text);
+}
+
+.card-list p {
+    font-size: var(--text-sm);
+    color: #666;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* === FLECHAS DE NAVEGACIÓN === */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-bg);
+    border: 1px solid #EBEBEB;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: var(--color-accent);
+    color: white;
+}
+
+.prev-btn { left: -24px; }
+.next-btn { right: -24px; }
+
+/* === VERSIÓN MÓVIL === */
+@media (max-width: 768px) {
+    .menu-card-large {
+        /* En celular, cada tarjeta ocupa el 100% de la pantalla para mostrar solo 1 */
+        flex: 0 0 100%; 
+    }
+    
+    .slider-btn {
+        display: none; /* Ocultamos las flechas porque en celular se usa el dedo (swipe) */
+    }
+}

@@ -1,0 +1,44 @@
+/* css/base.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500&display=swap');
+
+/* css/base.css */
+:root {
+  /* Paleta "La Tentación" */
+  --color-bg: #FCFCF9;
+  --color-text: #231F1D;
+  --color-accent: #A86A3D;
+  --color-accent-hover: #8A5631; /* Un tono más oscuro para cuando pasen el ratón */
+  --color-overlay: rgba(35, 31, 29, 0.6); /* Para oscurecer la foto del Hero */
+
+  /* Tipografía (Mantenemos Playfair e Inter) */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  /* Sistema de Espaciado (Base 8px) */
+  --space-xs: 0.5rem;  /* 8px */
+  --space-sm: 1rem;    /* 16px */
+  --space-md: 1.5rem;  /* 24px */
+  --space-lg: 2rem;    /* 32px */
+  --space-xl: 3rem;    /* 48px */
+  --space-xxl: 5rem;   /* 80px */
+}
+
+/* Reset básico "Spartan" */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  font-weight: 600;
+}
