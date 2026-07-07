@@ -422,16 +422,33 @@
     line-height: 1.6;
 }
 
-/* En móviles ya no necesitamos cambiar el flex-direction porque ya es vertical, 
-   solo ajustamos tamaños */
+/* === AJUSTES EXCLUSIVOS PARA MÓVILES (Menos de 768px) === */
 @media (max-width: 768px) {
+    .about-container {
+        /* En móvil reducimos el espacio muerto al mínimo para evitar que la última tarjeta flote de más */
+        padding-bottom: 2vh; 
+        margin-bottom: 0;
+    }
+
     .about-card {
+        /* ¡La clave! Cambiamos height de vh a auto para que la tarjeta crezca según su texto */
         height: auto;
-        min-height: 80vh;
+        /* Le damos una altura mínima cómoda para que luzca la foto y el contenido */
+        min-height: 65vh; 
+        /* Reducimos el margen inferior entre ellas para que se apilen más rápido */
+        margin-bottom: 3vh; 
     }
+
+    /* Reducimos un poco el escalonamiento en el tope para que no se amontonen tanto arriba del celular */
+    #card-1 { top: 12vh; }
+    #card-2 { top: 14vh; }
+    #card-3 { top: 16vh; }
+
     .about-image {
-        min-height: 350px;
+        /* Controlamos que la imagen tome un tamaño fijo y no colapse */
+        min-height: 280px;
     }
+    
     .about-content {
         padding: var(--space-lg);
     }
