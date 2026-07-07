@@ -28,7 +28,7 @@
     <!-- 3. Acciones a la derecha (Botón y Hamburguesa) -->
     <div class="nav-actions">
         <!-- Botón Ubicación -->
-        <a href="https://maps.google.com/..." target="_blank" class="btn-primary">
+        <a href="https://maps.app.goo.gl/ErZ61RSA5KXCveKB6" target="_blank" class="btn-primary">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
@@ -45,29 +45,36 @@
     </div>
 </header>
 
-<!-- index.html (Sección Hero Actualizada con tu imagen) -->
-<section class="hero" id="hero">
-    <!-- El ID hero-bg es crucial para que el JavaScript lo encuentre -->
-    <div class="hero-bg" id="hero-bg" style="background-image: url('assets/img/hero_cafe.jpg');"></div>
-    <div class="hero-overlay"></div>
-    
+<!-- Hero Section Preparado para GSAP Avanzado -->
+<section class="hero" id="inicio">
+    <!-- El fondo y su capa oscura -->
+    <div class="hero-bg-wrapper">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+    </div>
+
     <div class="hero-content">
-        <!-- El Kicker o Ceja -->
-        <span class="hero-kicker" style="font-family: var(--font-body); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
-            El dulce manjar de tu paladar
-        </span>
+        <!-- Textos envueltos en "máscaras" (reveal-mask) -->
+        <div class="reveal-mask">
+            <span class="hero-kicker">La Auténtica Experiencia</span>
+        </div>
         
-        <!-- El Título Principal -->
-        <h1 class="hero-title">La Tentación</h1>
+        <div class="reveal-mask">
+            <h1 class="hero-title">La Tentación</h1>
+        </div>
         
-        <!-- El Subtítulo Persuasivo -->
-        <p class="hero-subtitle" style="max-width: 600px; margin: 0 auto;">
-            Mucho más que café. Relájate y comparte desde nuestras tradicionales marquesitas dulces y saladas, hasta bebidas calientes, alitas y snacks para cualquier antojo.
-        </p>
+        <div class="reveal-mask">
+            <p class="hero-subtitle">Café, juegos y el mejor ambiente de la ciudad.</p>
+        </div>
         
-        <a href="#menu" class="btn-primary" style="margin-top: var(--space-lg);">Ver el Menú</a>
+        <div class="reveal-mask mt-4">
+            <a href="#menu" class="btn-primary">
+                Ver Menú
+            </a>
+        </div>
     </div>
 </section>
+
 
 <!-- index.html (Sección Menú Carrusel) -->
 <section class="menu-carousel-section" id="menu">
@@ -216,10 +223,18 @@
     </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     
-    <!-- Scripts modulares -->
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/parallax.js"></script>
-    <script type="module" src="js/menu.js"></script>
+<!-- Scripts modulares -->
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/parallax.js"></script>
+<script type="module" src="js/menu.js"></script>
+
+    
+
+</body>
+</html>
 </body>
 </html>

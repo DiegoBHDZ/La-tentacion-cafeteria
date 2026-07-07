@@ -184,40 +184,40 @@
     align-items: center;
 }
 
-/* === ANIMACIONES DEL HERO === */
-
-@keyframes revealHero {
-    0% {
-        -webkit-clip-path: inset(40% 40% 40% 40% round 30px);
-        clip-path: inset(40% 40% 40% 40% round 30px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-clip-path: inset(0 0 0 0 round 0);
-        clip-path: inset(0 0 0 0 round 0);
-        opacity: 1;
-    }
+/* === HERO GSAP STYLES === */
+.hero-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Inicia recortado en el centro (como una franja cinematográfica) */
+    clip-path: inset(40% 0 40% 0); 
 }
 
-@keyframes fadeUp {
-    from { 
-        opacity: 0; 
-        transform: translateY(30px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/img/hero_cafe.jpg');
+    background-size: cover;
+    background-position: center;
+    /* Inicia con mucho zoom para el efecto parallax de entrada */
+    transform: scale(1.4); 
 }
 
-.hero-content > * {
-    opacity: 0;
+/* LA MAGIA DEL MASKING */
+.reveal-mask {
+    overflow: hidden; /* Esto crea una "pared" invisible */
+    padding-bottom: 5px; /* Evita que se corten letras como la 'g' o 'p' */
 }
 
-.hero-kicker { animation: fadeUp 1s ease 1s forwards; }
-.hero-title { animation: fadeUp 1s ease 1.2s forwards; }
-.hero-subtitle { animation: fadeUp 1s ease 1.4s forwards; }
-.hero-content .btn-primary { animation: fadeUp 1s ease 1.6s forwards; }
+/* Elementos dentro de la máscara inician empujados hacia abajo (ocultos) */
+.reveal-mask > * {
+    transform: translateY(110%);
+    display: inline-block; /* Necesario para que el transform funcione en spans */
+}
 
 
 /* ==========================================================================
@@ -336,19 +336,14 @@
     padding: var(--space-xxl) var(--space-md);
 }
 
-.about-container {
-    max-width: 600px; /* Reducimos el ancho para que la tarjeta vertical no sea un bloque deforme */
-    margin: 0 auto;
-    padding-bottom: 0; 
-}
 
-/* === TÍTULO DE LA SECCIÓN === */
-.section-header-dark {
-    text-align: center;
-    margin-bottom: var(--space-xl);
-    top: 20px; /* Se queda pegado arriba con un pequeño margen */
-    z-index: 5; /* Asegura que esté por encima de las tarjetas */
-    background-color: var(--color-text); /* Fondo oscuro para que no se transparente */
+
+.about-container {
+    max-width: 600px; 
+    margin: 0 auto;
+    /* CRÍTICO: Necesitamos espacio para que funcione el scroll 3D */
+    padding-bottom: 0;
+    margin-bottom: -10vh; 
 }
 
 .kicker-light {
@@ -373,12 +368,9 @@
 /* === LAS TARJETAS VERTICALES === */
 .about-card {
     position: sticky;
-    top: 20vh; /* Frenan un poco más arriba para dejar ver el efecto */
-    
-    /* El cambio maestro: de horizontal a vertical */
+    top: 18vh; /* Se acomodan debajo del título sticky */
     flex-direction: column; 
-    height: 75vh; 
-    
+    height: 70vh; /* Bajé 5vh para que respiren mejor en celular */
     background-color: var(--color-bg);
     border-radius: 20px;
     box-shadow: 0 -15px 30px rgba(0,0,0,0.3);
@@ -388,9 +380,9 @@
 }
 
 /* Escalonamiento de las tarjetas */
-#card-1 { top: 20vh; }
-#card-2 { top: 23vh; }
-#card-3 { top: 26vh; }
+#card-1 { top: 18vh; }
+#card-2 { top: 21vh; }
+#card-3 { top: 24vh; }
 
 .section-header-dark {
     position: sticky;
