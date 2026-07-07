@@ -426,31 +426,58 @@
 @media (max-width: 768px) {
     .about-container {
         /* En móvil reducimos el espacio muerto al mínimo para evitar que la última tarjeta flote de más */
-        padding-bottom: 2vh; 
-        margin-bottom: 0;
+        padding-bottom: 13vh; 
+        margin-bottom: -13vh;
     }
 
     .about-card {
         /* ¡La clave! Cambiamos height de vh a auto para que la tarjeta crezca según su texto */
-        height: auto;
+        height: 70vh !important;
         /* Le damos una altura mínima cómoda para que luzca la foto y el contenido */
         min-height: 65vh; 
         /* Reducimos el margen inferior entre ellas para que se apilen más rápido */
         margin-bottom: 3vh; 
     }
 
-    /* Reducimos un poco el escalonamiento en el tope para que no se amontonen tanto arriba del celular */
+    /* 1. Título siempre anclado arriba */
+    .section-header-dark {
+        top: 2vh; 
+        margin-bottom: 20px;
+        padding: 10px 0;
+    }
+
     #card-1 { top: 12vh; }
-    #card-2 { top: 14vh; }
-    #card-3 { top: 16vh; }
+    #card-2 { top: 15vh; }
+    #card-3 { top: 25vh; }
 
     .about-image {
-        /* Controlamos que la imagen tome un tamaño fijo y no colapse */
-        min-height: 280px;
+        flex: 1; /* Esto es magia pura: toma el espacio restante, se estira o se encoge sola */
+        min-height: 120px !important; /* Tamaño mínimo vital para la foto en celulares miniatura */
     }
     
+    /* 5. El Bloque de Texto Compacto */
     .about-content {
-        padding: var(--space-lg);
+        flex: none; /* El texto no se deforma */
+        padding: 20px 15px; 
+    }
+
+    .about-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .about-content p {
+        font-size: 0.95rem; /* Un pelo más compacto para legibilidad fluida */
+        line-height: 1.4;
+    }
+
+    /* Ajuste de la tarjeta de puro texto */
+    .typography-only {
+        padding: 10% !important;
+    }
+
+    .massive-text {
+        font-size: 1.5rem !important;
     }
 }
 
